@@ -26,7 +26,7 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    
+
     public void Undo()
     {
         if (currentCommandNum > 0)
@@ -55,11 +55,11 @@ public class InputHandler : MonoBehaviour
         currentCommandNum++;
     }
 
-    
+
     //Simple move commands to attach to UI buttons
-    public void MoveUp()    { Move(MoveDirection.up); }
-    public void MoveDown()  { Move(MoveDirection.down); }
-    public void MoveLeft()  { Move(MoveDirection.left); }
+    public void MoveUp() { Move(MoveDirection.up); }
+    public void MoveDown() { Move(MoveDirection.down); }
+    public void MoveLeft() { Move(MoveDirection.left); }
     public void MoveRight() { Move(MoveDirection.right); }
 
     //Shows what's going on in the command list
@@ -78,7 +78,7 @@ public class InputHandler : MonoBehaviour
                 label += "> " + commands[i].ToString() + "\n";
             else
                 label += "   " + commands[i].ToString() + "\n";
-            
+
         }
         GUI.Label(new Rect(0, 0, 400, 800), label);
     }
