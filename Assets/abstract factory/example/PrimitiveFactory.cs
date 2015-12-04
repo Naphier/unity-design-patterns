@@ -1,48 +1,47 @@
-using System.Collections;
 using UnityEngine;
 
-namespace NG.PrimitiveFactory
+namespace NG.AbstractFactoryExample
 {
     // Must implement CreateProductA and CreateProductB methods
     public class PrimitiveFactory : AbstractPrimitiveFactory
     {
-        public override AbstractPrimitiveA CreateProductA(Vector3 position)
+        public override AbstractPrimitiveProduct CreateProductA(Vector3 position)
         {
-            return new PrimitiveCube(position);
+            return new Cube(position);
         }
 
-        public override AbstractProductAB CreateProductB(Vector3 position)
+        public override AbstractPrimitiveProduct CreateProductB(Vector3 position)
         {
-            return new PrimitiveSphere(position);
+            return new Sphere(position);
         }
     }
 
-    public class PrimitiveCube : AbstractPrimitiveA
+    public class Cube : PrimitiveA
     {
         // Constructor
-        public PrimitiveCube (Vector3 position)
+        public Cube (Vector3 position)
         {
             Instantiate(PrimitiveType.Cube, position);
         }
 
         // Interact with another like product
-        public override void Combine(AbstractPrimitiveA a)
+        public override void Interact(PrimitiveA a)
         {
             CombineWith(a);
         }
     }
 
 
-    public class PrimitiveSphere : AbstractProductAB
+    public class Sphere : PrimitiveB
     {
         // Constructor
-        public PrimitiveSphere(Vector3 position)
+        public Sphere(Vector3 position)
         {
             Instantiate(PrimitiveType.Sphere, position);
         }
 
         // Combine with product A, destroying it and making a capsule
-        public override void Combine(AbstractPrimitiveA a)
+        public override void Interact(PrimitiveA a)
         {
             CombineWith(a);
 
@@ -70,7 +69,7 @@ namespace NG.PrimitiveFactory
 
 
         // Interaction with non-like products
-        public override void Combine(AbstractProductAB b)
+        public override void Interact(PrimitiveB b)
         {
             CombineWith(b);
         }
@@ -78,48 +77,16 @@ namespace NG.PrimitiveFactory
     }
 
 
-    public class PrimitiveClient
-    {
-        private AbstractPrimitiveA[] _abstractProductsA = new AbstractPrimitiveA[2];   
-        private AbstractProductAB[] _abstractProductsB = new AbstractProductAB[2];
-
-        public PrimitiveClient(AbstractPrimitiveFactory factory)
-        {
-            _abstractProductsA[0] = factory.CreateProductA(new Vector3(-1f , -0.5f , 0f));
-            _abstractProductsA[1] = factory.CreateProductA(new Vector3(-1f , 0.5f , 0f));
-
-            _abstractProductsB[0] = factory.CreateProductB(new Vector3(1f, -0.5f, 0f));
-            _abstractProductsB[1] = factory.CreateProductB(new Vector3(1f, 0.5f, 0f));
-        }
-
-        public IEnumerator Run()
-        {
-            Debug.Log("Run starts");
-            yield return new WaitForSeconds(5f);
-
-            Debug.Log("Combine Products A");
-            _abstractProductsA[0].Combine(_abstractProductsA[1]);
-            yield return new WaitForSeconds(2f);
-
-            Debug.Log("Combine Products B");
-            _abstractProductsB[0].Combine(_abstractProductsB[1]);
-            yield return new WaitForSeconds(2f);
-
-            Debug.Log("Product B absorbs A");
-            _abstractProductsB[0].Combine(_abstractProductsA[0]);
-
-
-        }
-    }
+    
 
     public class RColor
     {
         public static Color Random()
         {
             return new Color(
-                    UnityEngine.Random.value,
-                    UnityEngine.Random.value,
-                    UnityEngine.Random.value, 
+                    0.25f * UnityEngine.Random.value,
+                    0.25f * UnityEngine.Random.value,
+                    0.25f * UnityEngine.Random.value, 
                     1f
                     );
         }

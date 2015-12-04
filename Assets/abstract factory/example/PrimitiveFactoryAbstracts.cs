@@ -1,16 +1,16 @@
 using UnityEngine;
 
 // Defines our abstract classes to force implementation of abstract methods
-namespace NG.PrimitiveFactory
+namespace NG.AbstractFactoryExample
 {
     public abstract class AbstractPrimitiveFactory
     {
-        public abstract AbstractPrimitiveA CreateProductA(Vector3 position);
-        public abstract AbstractProductAB CreateProductB(Vector3 position);
+        public abstract AbstractPrimitiveProduct CreateProductA(Vector3 position);
+        public abstract AbstractPrimitiveProduct CreateProductB(Vector3 position);
     }
 
 
-    public abstract class AbstractPrimitive
+    public abstract class AbstractPrimitiveProduct
     {
         public GameObject gameObject { get; protected set; }
         public Color color { get; protected set; }
@@ -27,7 +27,7 @@ namespace NG.PrimitiveFactory
                 meshRenderer.material.color = color;
         }
 
-        public void CombineWith(AbstractPrimitive other)
+        public void CombineWith(AbstractPrimitiveProduct other)
         {
             // prevent self interaction
             if (other == this)
@@ -44,26 +44,30 @@ namespace NG.PrimitiveFactory
                 this.meshRenderer.material.color = newColor;
             }
 
-            gameObject.transform.localScale += other.gameObject.transform.localScale;
+            gameObject.transform.localScale *= 1.1f;
+
+            Vector3 newPosition = 0.5f * (other.gameObject.transform.position - gameObject.transform.position);
+            gameObject.transform.position += newPosition;
 
             GameObject.Destroy(other.gameObject);
+            other = null;
         }
     }
 
     /// <summary>
     /// Can only interact with like products
     /// </summary>
-    public abstract class AbstractPrimitiveA : AbstractPrimitive
+    public abstract class PrimitiveA : AbstractPrimitiveProduct
     {
-        public abstract void Combine(AbstractPrimitiveA a);
+        public abstract void Interact(PrimitiveA a);
     }
 
     /// <summary>
     /// Can interact with either product
     /// </summary>
-    public abstract class AbstractProductAB : AbstractPrimitive
+    public abstract class PrimitiveB : AbstractPrimitiveProduct
     {
-        public abstract void Combine(AbstractPrimitiveA a);
-        public abstract void Combine(AbstractProductAB b);
+        public abstract void Interact(PrimitiveA a);
+        public abstract void Interact(PrimitiveB b);
     }
 }
