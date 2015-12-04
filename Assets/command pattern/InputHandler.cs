@@ -1,10 +1,10 @@
-﻿/// <summary>
+/// <summary>
 /// The 'Invoker' class that makes calls to execute the commands
 /// </summary>
 
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using NG.CommandPatternExample;
 
 public class InputHandler : MonoBehaviour
 {
