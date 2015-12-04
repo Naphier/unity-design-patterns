@@ -1,4 +1,7 @@
-public abstract class FlyweightBase
+namespace NG.Flyweight.Structure
 {
-    public abstract void StatefulOperation(object obj);
+    public abstract class FlyweightBase
+    {
+        public abstract void StatefulOperation(object obj);
+    }
 }

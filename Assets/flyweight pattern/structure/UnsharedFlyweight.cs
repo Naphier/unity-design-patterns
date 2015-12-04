@@ -1,14 +1,14 @@
-using UnityEngine;
-using System.Collections;
-using System;
-
-public class UnsharedFlyweight : FlyweightBase
+namespace NG.Flyweight.Structure
 {
-    private object _state;
-
-    public override void StatefulOperation(object obj)
+    public class UnsharedFlyweight : FlyweightBase
     {
-        _state = obj;
-        Debug.Log("Unshared flyweight StatefulOperation: " + _state.ToString());
+        private object _state;
+
+        public override void StatefulOperation(object obj)
+        {
+            _state = obj;
+            UnityEngine.Debug.Log("Unshared flyweight StatefulOperation: " + _state.ToString());
+        }
     }
+
 }

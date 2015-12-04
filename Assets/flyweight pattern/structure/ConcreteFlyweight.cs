@@ -1,10 +1,12 @@
-using UnityEngine;
 
-public class ConcreteFlyweight : FlyweightBase
+namespace NG.Flyweight.Structure
 {
-
-    public override void StatefulOperation(object obj)
+    public class ConcreteFlyweight : FlyweightBase
     {
-        Debug.Log("Not implememnted - object: " + obj.ToString());
+
+        public override void StatefulOperation(object obj)
+        {
+            UnityEngine.Debug.Log("Not implememnted - object: " + obj.ToString());
+        }
     }
 }

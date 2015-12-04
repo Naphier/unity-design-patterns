@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using NG.Flyweight.Example;
+
 public class FlyweightTest : MonoBehaviour
 {
     private static Dictionary<Guid, Unit> unitsOnField = new Dictionary<Guid, Unit>();

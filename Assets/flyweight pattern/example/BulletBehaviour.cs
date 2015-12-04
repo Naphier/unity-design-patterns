@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class BulletBehaviour : MonoBehaviour
 {
@@ -19,17 +18,6 @@ public class BulletBehaviour : MonoBehaviour
 
     void Update()
     {
-        /*
-        if (target != null)
-        {
-            gameObject.transform.position =
-                Vector3.MoveTowards(gameObject.transform.position,
-                target.transform.position, Time.deltaTime * speed);
-        }
-        else
-            Destroy(gameObject);
-            */
-
         gameObject.transform.position += direction * Time.deltaTime * speed;
         if ((gameObject.transform.position - startPosition).magnitude > range)
             Destroy(gameObject);

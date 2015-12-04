@@ -1,5 +1,6 @@
 using UnityEngine;
-using System;
+
+using NG.Flyweight.Example;
 
 public class UnitMonobehaviour : MonoBehaviour
 {

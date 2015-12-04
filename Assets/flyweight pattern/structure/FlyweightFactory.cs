@@ -1,23 +1,25 @@
 using System.Collections;
-
-public class FlyweightFactory 
+namespace NG.Flyweight.Structure
 {
-    private Hashtable _flyweights = new Hashtable();
-
-    public FlyweightBase GetFlyweight(string key)
+    public class FlyweightFactory
     {
-        if (_flyweights.Contains(key))
-        {
-            return _flyweights[key] as FlyweightBase;
-        }
-        else
-        {
-            ConcreteFlyweight newFlyweight = new ConcreteFlyweight();
+        private Hashtable _flyweights = new Hashtable();
 
-            // Set flyweight's properties here.
+        public FlyweightBase GetFlyweight(string key)
+        {
+            if (_flyweights.Contains(key))
+            {
+                return _flyweights[key] as FlyweightBase;
+            }
+            else
+            {
+                ConcreteFlyweight newFlyweight = new ConcreteFlyweight();
 
-            _flyweights.Add(key, newFlyweight);
-            return newFlyweight;
+                // Set flyweight's properties here.
+
+                _flyweights.Add(key, newFlyweight);
+                return newFlyweight;
+            }
         }
     }
 }
