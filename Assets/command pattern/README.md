@@ -1,4 +1,6 @@
-Command patterns are useful for when you want a generic way to store a command and be able to undo it.
+# Command Pattern
+
+Command patterns are most useful for when you want a generic way to store a command and be able to undo it.
 In the scene "command pattern example" you'll see a simple dot that can be moved by GUI buttons.
 After making a move you can then undo and redo it. I've added a simple OnGUI label output to the screen so you can see the list of commands with an indication of which is the current command.
 
