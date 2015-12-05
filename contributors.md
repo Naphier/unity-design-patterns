@@ -9,7 +9,7 @@
 - [Updating your Pull Request](#updating-your-pull-request)
 
 #### How to Contribute
-Contributing is easy! Just fork this repository to your own GitHub account, make the changes you want then submit a pull request to the **development** branch. All forks should merge into **development** as this will provide us with the opportunity to make test them out before merging into the master branch for public consumption. 
+Contributing is easy! Just fork this repository to your own GitHub account, make the changes you want then submit a pull request to the **development** branch. All forks should merge into **development** as this will provide us with the opportunity to make test them out before merging into the master branch for public consumption. If a **development** branch does not exist when you are ready to make your pull request just shoot me a line and I'll make one (contact info is in my profile). 
 
 Changes to folder structure or .gitignore should be discussed in an **issue** before attempting them.
 
