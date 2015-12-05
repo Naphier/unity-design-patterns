@@ -12,7 +12,7 @@ Details on each pattern can be found in the Readme.md file in each pattern's fol
 Patterns done:
 - [Command Pattern]
 - [Abstract Factory Pattern]
-- [Flyweight Pattern] - This needs a much better example.
+- [Flyweight Pattern] - This could use a better, more visual example.
 
 ### Contributors Welcome
 Please check out [contributors.md] if you'd like to help out with this project. It will take me forever to do all of these on my own and I'd love to have some help!
