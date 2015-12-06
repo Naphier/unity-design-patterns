@@ -1,5 +1,5 @@
-# Welcome to unity-design-patterns
-### Examples of programming design patterns in Unity3D C#
+# Welcome to Unity Design Patterns
+### Examples of programming design patterns in Unity3D C# 
 
 Thanks to [Robert Nystrom's Game Programming Patterns][1]
 and the examples found on [Rivello Multimedia's website][2]. 
