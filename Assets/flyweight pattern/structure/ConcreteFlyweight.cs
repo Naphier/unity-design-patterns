@@ -6,7 +6,7 @@ namespace NG.Flyweight.Structure
 
         public override void StatefulOperation(object obj)
         {
-            UnityEngine.Debug.Log("Not implememnted - object: " + obj.ToString());
+            UnityEngine.Debug.Log("Not implemented - object: " + obj.ToString());
         }
     }
 }
