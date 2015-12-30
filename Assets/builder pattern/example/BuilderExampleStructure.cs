@@ -1,8 +1,5 @@
 using UnityEngine;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace NG.builder_pattern.example
 {
@@ -20,21 +17,16 @@ namespace NG.builder_pattern.example
 
     // Our 'abstract Builder' class
     // Definition of what methods will be used to actually build the vehicles.
-    abstract class VehicleBuilder
+    interface VehicleBuilder
     {
-        protected Vehicle _vehicle;
-
         // Gets the vehicle instance
-        public Vehicle vehicle { get { return _vehicle; } }
+        Vehicle vehicle { get; }
 
-        // Abstract building methods
-        public abstract void BuildFrame();
-        public abstract void BuildEngine();
-        public abstract void BuildWheels();
-        public abstract void BuildDoors();
-
-        // Unfortunately we can't enforce a constructor via an abstract class.
-        // This is where an abstract factory pattern might come in handy for manufacturing the VehicleBuilder classes.
+        // Contract methods for building the components
+        void BuildFrame();
+        void BuildEngine();
+        void BuildWheels();
+        void BuildDoors();
     }
 
     enum VehicleType { Scooter, Car, MotorCycle }
@@ -70,12 +62,9 @@ namespace NG.builder_pattern.example
             return partsList;
         }
 
-    }
-
-    // Provides a common function to make the parts.
-    class Part
-    {
-        public static GameObject MakePart(PrimitiveType primitiveType, string name, Vector3 scale, Color color)
+        // Provides a common function to make the parts. Not truly a part of the standard
+        // pattern, but included in this example to make part creation easier.
+        public GameObject MakePart(PrimitiveType primitiveType, string name, Vector3 scale, Color color)
         {
             GameObject go = GameObject.CreatePrimitive(primitiveType);
             go.name = name;
@@ -87,4 +76,7 @@ namespace NG.builder_pattern.example
             return go;
         }
     }
+
+    
+
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using NG.builder_pattern.example;
 
 public class BuilderController : MonoBehaviour
@@ -12,25 +11,27 @@ public class BuilderController : MonoBehaviour
         MotorCycleBuilder motorCycleBuilder = new MotorCycleBuilder();
         ScooterBuilder scooterBuilder = new ScooterBuilder();
 
-        // Make the products
+        // Make the products, the vehicles.
         shopForeman.Construct(carBuilder);
         shopForeman.Construct(motorCycleBuilder);
         shopForeman.Construct(scooterBuilder);
 
-        // Get the vehicles and do stuff with them
+        // Get the vehicles and access their methods.
         Vehicle car = carBuilder.vehicle;
-        car.parent.transform.position = new Vector3(-6f, 0, 0);
         Debug.Log(car.GetPartsList());
         
         Vehicle motorCycle = motorCycleBuilder.vehicle;
-        motorCycle.parent.transform.position = new Vector3(6f, 0, 0);
         Debug.Log(motorCycle.GetPartsList());
 
-        
         Vehicle scooter = scooterBuilder.vehicle;
-        scooter.parent.transform.localScale *= 0.5f;
         Debug.Log(scooter.GetPartsList());
-        
+
+
+        // These calls don't have anything to do with the pattern.
+        // They are simply here to make our visual display of the vehicles
+        // in the Unity scene look nice.
+        car.parent.transform.position = new Vector3(-6f, 0, 0);
+        motorCycle.parent.transform.position = new Vector3(6f, 0, 0);
     }
 
     void Update()
