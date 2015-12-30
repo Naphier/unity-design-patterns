@@ -1,5 +1,3 @@
-//http://www.dofactory.com/net/abstract-factory-design-pattern
-
 using System;
 
 namespace NG.Patterns.Structure.AbstractFactory

@@ -2,6 +2,12 @@ using UnityEngine;
 using System.Collections;
 using NG.AbstractFactoryExample;
 
+/// <summary>
+/// This class is NOT part of the pattern. 
+/// It simply exists as our main program from which we will 
+/// run our application.
+/// </summary>
+
 public class PrimitiveFactoryController : MonoBehaviour
 {
     void Start()

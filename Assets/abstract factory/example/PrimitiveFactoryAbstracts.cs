@@ -1,8 +1,16 @@
 using UnityEngine;
 
-// Defines our abstract classes to force implementation of abstract methods
+/// <summary>
+/// This is the structure of our pattern's implementation.
+/// </summary>
 namespace NG.AbstractFactoryExample
 {
+    /// <summary>
+    /// This is our abstract factory interface which allows us to create any abstract product we define.
+    /// Note how we are defining a method for each product. This may cause some inflexibility in the design,
+    /// but the design still has an advantage at the end point since when you create the products you won't 
+    /// need to know the concrete products.
+    /// <summary>
     public abstract class AbstractPrimitiveFactory
     {
         public abstract AbstractPrimitiveProduct CreateProductA(Vector3 position);
