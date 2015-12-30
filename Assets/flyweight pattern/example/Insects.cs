@@ -11,20 +11,23 @@ namespace NG.Flyweight.Example
         // Total data size = 34 bytes
         // Imagine if we needed 10,000 of each insect, the data alone would require 3 * 10,000 * 34 = 102,000 bytes or 102kb
         // With the flyweight in use the shared data only ever requires at most 34 * 3 = 102 bytes
+        #region Intrinsic States
+        public InsectType insectType { get; protected set; }// 4 bytes
+        protected int size;
+        protected int legs;
+        protected int eyes;
+        protected int antennae;
+        protected int toughness;
+        public int maxHealth { get; protected set; }
+        protected int hunger;
+        protected bool canFly; // 1 byte
+        protected bool canBurrow;
+        #endregion
 
-        public InsectType insectType; // 4 bytes
-        public int size;
-        public int legs;
-        public int eyes;
-        public int antennae;
-        public int toughness;
-        public int maxHealth;
-        public int hunger;
-        public bool canFly; // 1 byte
-        public bool canBurrow;
-
+        #region Extrinsic State
         // Some "stateful" object - here an int that is calculated in the method.
         public abstract int GetStrength(int health);
+        #endregion
     }
 
     class Insect : InsectBase
