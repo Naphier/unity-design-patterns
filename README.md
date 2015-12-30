@@ -17,6 +17,7 @@ Patterns done:
  - [Builder Pattern]
  - [Factory Method Pattern]
  - [Decorator Pattern]
+ - [Strategy Pattern]
 
 ### Contributors Welcome
 Please check out [contributors.md] if you'd like to help out with this project. It will take me forever to do all of these on my own and I'd love to have some help!
@@ -28,14 +29,13 @@ Patterns to do:
 - Adapter
 - Bridge
 - Composite
-- Decorator
 - Facade
 - Proxy
 - Chain of Responsibility
 - Interpreter
 - Iterator
 - Mediator
-- Membero
+- Memento
 - Observer
 - State
 - Strategy
@@ -53,3 +53,4 @@ Patterns to do:
 [builder pattern]:https://github.com/Naphier/unity-design-patterns/tree/master/Assets/builder%20pattern
 [factory method pattern]:https://github.com/Naphier/unity-design-patterns/tree/master/Assets/factory%20method%20pattern
 [decorator pattern]:https://github.com/Naphier/unity-design-patterns/tree/master/Assets/decorator
+[strategy pattern]:https://github.com/Naphier/unity-design-patterns/tree/master/Assets/strategy%20pattern
