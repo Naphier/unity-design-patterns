@@ -6,9 +6,9 @@ public class MeleeAttackClient : MonoBehaviour
 {
     public ParticleSystem kiParticles;
     MeleeAttack baseMeleeAttack;
-    HardPunch hardPunch;
-    KiPunch kiPunch;
-    MeleeAttack superKiPunch;
+    MeleeDecorator hardPunch;
+    MeleeDecorator kiPunch;
+    MeleeDecorator superKiPunch;
         
     void Start()
     {
@@ -20,13 +20,13 @@ public class MeleeAttackClient : MonoBehaviour
         kiPunch = new KiPunch(kiParticles);
         kiPunch.SetMeleeAttack(baseMeleeAttack);
 
+        // Set up the Super Ki Punch
         HardPunch hpDeco = new HardPunch();
         hpDeco.SetMeleeAttack(baseMeleeAttack);
         superKiPunch = hpDeco;
         KiPunch kpDeco = new KiPunch(kiParticles);
         kpDeco.SetMeleeAttack(superKiPunch);
         superKiPunch = kpDeco;
-
     }
 
 
@@ -47,7 +47,7 @@ public class MeleeAttackClient : MonoBehaviour
 
     void OnGUI()
     {
-        string label = "Left click to attack\nSpacebar to decorate attack with hard punch\nLeft Shift to decorate with Ki Attack";
+        string label = "Q = Base attack\nW = Hard Punch\nE = Ki Punch\nR = Super Ki Punch";
 
         GUI.Label(new Rect(0, 0, 500, 500), label);
     }
