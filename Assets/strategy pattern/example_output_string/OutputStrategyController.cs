@@ -13,6 +13,7 @@ public class OutputStrategyController : MonoBehaviour
 
         //Easily change the context!
         context = new OutputContext(new EncryptedOutput());
-        Debug.Log("This is the encrypted output:\n" + context.GetOutput(input));        
+        Debug.Log("This is the encrypted output:\n" + context.GetOutput(input));
+
     }
 }

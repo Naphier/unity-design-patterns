@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Assets.strategy_pattern.structure
+namespace StrategyPattern.structure
 {
     abstract class Strategy
     {

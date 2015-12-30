@@ -29,32 +29,7 @@ namespace Assets.strategy_pattern.example_output_string
     {
         public string Output(string input)
         {
-            return Rot13.Transform(input);
-        }
-    }
-
-    public class OutputContext
-    {
-        IOutputStrategy outputStrategy;
-        public OutputContext(IOutputStrategy outputStrategy)
-        {
-            this.outputStrategy = outputStrategy;
-        }
-
-        public string GetOutput(string input)
-        {
-            return outputStrategy.Output(input);
-        }
-    }
-
-    /// <summary>
-    /// Utility method for simple 'encryption'
-    /// </summary>
-    public static class Rot13
-    {
-        public static string Transform(string value)
-        {
-            char[] array = value.ToCharArray();
+            char[] array = input.ToCharArray();
             for (int i = 0; i < array.Length; i++)
             {
                 int number = (int)array[i];
@@ -84,6 +59,20 @@ namespace Assets.strategy_pattern.example_output_string
                 array[i] = (char)number;
             }
             return new string(array);
+        }
+    }
+
+    public class OutputContext
+    {
+        IOutputStrategy outputStrategy;
+        public OutputContext(IOutputStrategy outputStrategy)
+        {
+            this.outputStrategy = outputStrategy;
+        }
+
+        public string GetOutput(string input)
+        {
+            return outputStrategy.Output(input);
         }
     }
 }
