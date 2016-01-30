@@ -5,7 +5,7 @@ Thanks to [Robert Nystrom's Game Programming Patterns][1]
 and the examples found on [Rivello Multimedia's website][2]. 
 Each pattern is contained in a separate folder. Inside these are a folder ("structure") to show what classes are used in the pattern's structure and a folder ("example") showing a real-world example of using the pattern in Unity3D along with a scene showing it in action.
 
-As these are accomplished I plan to do a blog article on each at [CleanSourceCode.com](http://cleansourcecode.com). Once the articles are done they will be referenced in each pattern's readme.md.
+As these are accomplished I plan to do a blog article on each. Once the articles are done they will be referenced in each pattern's readme.md.
 
 Details on each pattern can be found in the Readme.md file in each pattern's folder.
 
