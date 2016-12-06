@@ -15,14 +15,17 @@ namespace NG.Patterns.Structure.Singleton
         private int _numElipses = 0;
         private string _elipses = ".";
 
-        // Use this for initialization
-        public override void Start()
+        public void Start()
         {
-            base.Start();
+            //Begin the GameLoop Coroutine on start
             StartCoroutine(GameLoop());
         }
-
-        //This is used to represent the Update() of the game.
+         
+        //This is used to represent the Update() of the game. 
+        //Using a Coroutine in Unity is useful for GameLoops as it gives you more agency over the Game. 
+        //You can Start and Stop it as needed, and when the Coroutine Exits and Starts again, it begins from where it left off.
+        //Rather than starting all over from the beginning. I frequently use nested Coroutines for game Update States.
+        //i.e. RoundStarting(), RoundRunning(), RoundEnding()
         IEnumerator GameLoop()
         {
             while(true)

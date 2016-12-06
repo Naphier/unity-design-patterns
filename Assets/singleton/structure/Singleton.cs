@@ -12,22 +12,25 @@ namespace NG.Patterns.Structure.Singleton
         {
             get
             {
+                if (_instance == null)
+                {
+                    //If there isn't find the instance and set it.
+                    _instance = FindObjectOfType<T>();
+                }
                 return _instance;
             }
         }
 
-        public virtual void Start()
+        //Making this a virtual function let's the programmer know that there is a function they must override
+        //It allows the programmer to make the decision to override the call completely, or to include the base call with its new functionality.
+        //In C# this is done by calling base.Awake() in the new class
+        public virtual void Awake()
         {
             //Check to make sure there isn't already an instance of this class.
-            if (_instance == null)
-            {
-                //If there isn't find the instance and set it.
-                _instance = FindObjectOfType<T>();
-            }
-            else
+            if(Instance != this)
             {
                 //If there is already an instance of this class, destroy the object we just created.
-                print("Attempted to spawn another singleton object, destroying new instance of " + gameObject.ToString());
+                Debug.LogWarning("Attempted to spawn more then one singleton object. destroying new instance of " + gameObject.ToString() + "\nIf you would like more than one instance, ensure that the class you have written does not Inherit from a Singleton class.");
                 Destroy(gameObject);
             }
         }
