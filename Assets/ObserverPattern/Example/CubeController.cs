@@ -1,25 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using NG.Patterns.Structure.ObserverPattern;
 using UnityEngine;
 
-public class CubeController : MonoBehaviour {
+namespace NG.Patterns.Structure.ObserverPatternExample
+{
+    public class CubeController : MonoBehaviour
+    {
+        Observer observer;
 
-    public MyCube myCube0;
-    public MyCube myCube1;
+        public MyCube myCube0;
+        public MyCube myCube1;
 
-	// Use this for initialization
-	void Start () {
-        Observer.AddListener(TestEvent.JUMP, myCube0, myCube0.Jump);
-        Observer.AddListener(TestEvent.JUMP, myCube1, myCube1.Jump);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyDown(KeyCode.W))
+        public void Awake()
         {
-            Observer.SendMessage(TestEvent.JUMP, 200f);
+            observer = Observer.Instance;
         }
 
-        
-	}
+        // Use this for initialization
+        void Start()
+        {
+            observer.AddListener(TestEvent.JUMP, myCube0, myCube0.Jump);
+            observer.AddListener(TestEvent.JUMP, myCube1, myCube1.Jump);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                observer.SendMessage(TestEvent.JUMP, 200f);
+            }
+        }
+    }
+
 }

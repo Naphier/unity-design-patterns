@@ -1,45 +1,51 @@
-﻿
+﻿using NG.Patterns.Structure.ObserverPattern;
 using UnityEngine;
 
-public class MyCube : BaseBehaviour
+namespace NG.Patterns.Structure.ObserverPatternExample
 {
-
-    Rigidbody rigid;
-
-    public int id;
-    
-    public void Awake()
+    public class MyCube : BaseBehaviour
     {
-        rigid = GetComponent<Rigidbody>();
-    }
+        Rigidbody rigid;
 
+        public int id;
 
-    // Use this for initialization
-    void Start()
-    {
-        Observer.AddListener(TestEvent.CHANGE_COLOR, this, ChangeColor);
-    }
+        Observer observer;
 
-    private void ChangeColor(ObservParam obj)
-    {
-        if (id != 0)
+        public void Awake()
         {
-            GetComponent<Renderer>().material.color = new Color(Random.Range(0.0f, 1f), Random.Range(0.0f, 1f), Random.Range(0.0f, 1f));
+            observer = Observer.Instance;
+            rigid = GetComponent<Rigidbody>();
+        }
+
+        // Use this for initialization
+        void Start()
+        {
+            observer.AddListener(TestEvent.CHANGE_COLOR, this, ChangeColor);
+        }
+
+        private void ChangeColor(ObservParam obj)
+        {
+            if (id != 0)
+            {
+                GetComponent<Renderer>().material.color = new Color(Random.Range(0.0f, 1f), Random.Range(0.0f, 1f), Random.Range(0.0f, 1f));
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                observer.SendMessage(TestEvent.CHANGE_COLOR);
+            }
+        }
+
+        public void Jump(ObservParam obj)
+        {
+            float param = (float)obj.data;
+            rigid.AddForce(new Vector3(0, param, 0));
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            Observer.SendMessage(TestEvent.CHANGE_COLOR);            
-        }
-    }
-
-    public void Jump(ObservParam obj)
-    {
-        float param = (float)obj.data;
-        rigid.AddForce(new Vector3(0, param, 0));
-    }
 }
+
