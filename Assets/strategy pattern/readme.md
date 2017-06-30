@@ -1,4 +1,4 @@
-#Strategy Pattern
+# Strategy Pattern
 Defines a family of algorithms, encapsulates each one, and makes the interchangeable. Strategy lets the algorithm vary independently from the clients that use it.
 
 ## Participants
