@@ -5,8 +5,9 @@ namespace logandlp.StatesPattern.States.Machines
     /// <typeparam name="T">State data.</typeparam>
     public abstract class StatesMachine<T> : MonoBehaviour where T : struct
     {
+        protected T _currentStateData;
+        
         private IStates<T> _currentState;
-        private T _currentStateData;
 
         protected virtual void Awake()
         {
@@ -19,6 +20,7 @@ namespace logandlp.StatesPattern.States.Machines
             IStates<T> nextState = _currentState?.Update(_currentStateData);
             if (nextState != null)
             {
+                OnNextStateEvent();
                 StatesTransition(nextState);
             }
         }
@@ -43,6 +45,11 @@ namespace logandlp.StatesPattern.States.Machines
             /// </summary>
             /// <returns>First state of the state machine.</returns>
             protected abstract IStates<T> FirstStatesCalled();
+
+            /// <summary>
+            /// Manages events before moving on to the following state.
+            /// </summary>
+            protected virtual void OnNextStateEvent() {}
 
         #endregion
     }
